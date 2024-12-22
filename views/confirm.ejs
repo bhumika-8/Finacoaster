@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Entry Fee</title>
+  <style>
+    /* General Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #121212; /* Deep dark background */
+  color: #ffffff; /* White text for contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Container Styling */
+.container {
+  width: 90%;
+  max-width: 500px;
+  background-color: rgba(0, 128, 0, 0.15); /* Subtle green tint */
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4); /* Subtle shadow */
+  text-align: center;
+}
+
+/* Heading Styling */
+h1 {
+  font-size: 2.5rem;
+  color: rgba(0, 128, 0, 0.6); /* Olive green */
+  margin-bottom: 1rem;
+}
+
+/* Text Styling */
+p {
+  font-size: 1.2rem;
+  color: #e0e0e0; /* Light gray for secondary text */
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Button and Link Styling */
+.actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+button, a {
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-confirm {
+  background-color: rgba(0, 128, 0, 0.6); /* Olive green */
+  color: #ffffff;
+  border: none;
+}
+
+.btn-confirm:hover {
+  background-color: rgba(0, 128, 0, 0.8); /* Slightly darker green on hover */
+}
+
+.btn-cancel {
+  background-color: #444444; /* Dark gray */
+  color: #ffffff;
+}
+
+.btn-cancel:hover {
+  background-color: #666666; /* Lighter gray on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  button, a {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Confirm Your Entry</h1>
+    <p>
+      This game requires an entry fee of <strong><%= entryFee %></strong> Finzos to play.
+    </p>
+    <p>Would you like to proceed?</p>
+    <form action="/confirm" method="POST" class="actions">
+      <button type="submit" class="btn-confirm">Yes, Proceed</button>
+      <a href="/" class="btn-cancel">No, Go Back</a>
+    </form>
+  </div>
+</body>
+</html>

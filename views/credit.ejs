@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+  crossorigin="anonymous"
+/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Credit Score Game</title>
+  <style>
+    /* General Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+ 
+  color: #ffffff; /* White text for readability */
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: row;
+  min-height: 100vh;
+}
+
+/* Container Styling */
+.container {
+    margin-top: 7vh;
+  width: 90%;
+  max-width: 600px;
+  background-color: rgba(6, 179, 64, 0.127); /* Subtle green tint */
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4); /* Subtle shadow */
+  text-align: center;
+}
+
+/* Heading Styling */
+h1 {
+  font-size: 2.5rem;
+  color: rgba(0, 219, 0, 0.6); /* Olive green */
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: 1rem;
+  color: #e0e0e0; /* Light gray for secondary text */
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Stats Section */
+.stats {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.stats strong {
+  color: red; /* Olive green */
+}
+
+/* Event Section */
+.event h2 {
+  font-size: 1.8rem;
+  color: rgba(0, 219, 0, 0.6); /* Olive green */
+  margin-bottom: 1rem;
+}
+
+/* Options Styling */
+.event form div {
+  margin: 1rem 0;
+}
+
+.event input[type="radio"] {
+  margin-right: 0.5rem;
+  accent-color: rgba(0, 128, 0, 0.6); /* Olive green for radio buttons */
+}
+
+.event label {
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+/* Buttons Styling */
+button {
+  background-color: rgba(0, 128, 0, 0.6); /* Olive green */
+  color: #ffffff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: rgba(0, 128, 0, 0.8); /* Slightly darker green on hover */
+}
+
+button:active {
+  background-color: rgba(0, 128, 0, 0.9); /* Even darker green on click */
+}
+
+/* Impact Message */
+#impact-message {
+  color: rgba(0, 128, 0, 0.6); /* Olive green */
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Reset Button */
+form[action="/reset"] button {
+  background-color: #444444; /* Dark gray for reset button */
+}
+
+form[action="/reset"] button:hover {
+  background-color: #666666; /* Slightly lighter gray on hover */
+}
+header {
+  position: fixed; /* Fix the header at the top of the page */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark background with transparency */
+  color: white;
+  padding: 10px 20px;
+  z-index: 1000; /* Ensure the header is above other content */
+}
+
+/* Header Container */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo Styling */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: rgba(0, 128, 0, 0.8); /* Olive green for the logo */
+}
+
+/* Navigation Menu */
+nav ul {
+  list-style-type: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: rgba(0, 128, 0, 0.8); /* Olive green on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h4 {
+    font-size: 0.9rem;
+  }
+
+  .stats {
+    font-size: 1rem;
+  }
+
+  .event h2 {
+    font-size: 1.5rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+    </style>
+</head>
+<body data-bs-theme="dark">
+    <header>
+        <div class="header-container">
+          <a href="/" class="logo">Finacoaster</a>
+          <nav>
+            <ul>
+              
+              <li><i class="fa-solid fa-house"></i><a href="/es"> Dashboard</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+  <div class="container">
+   
+    <h1>Credit Score Game</h1>
+    <h4>
+        A credit score is a three-digit number that rates your creditworthiness. FICO scores range from 300 to 850. The higher the score, the more likely you will get approved for loans and better rates
+        A credit score is based on your credit history, which includes information like the number of accounts, total debt levels, repayment history, and other factors.
+    </h4>
+    <div class="stats">
+      <p>Credit Score: <strong><%= user.credit_score %></strong></p>
+      <p>Net Balance: <strong>$<%= user.net_balance %></strong></p>
+    </div>
+    <div class="event">
+      <h2><%= event.event %></h2>
+      <form action="/submit" method="POST">
+        <% event.options.forEach((option, index) => { %>
+          <div>
+            <input
+              type="radio"
+              id="option-<%= index %>"
+              name="selectedOption"
+              value="<%= index %>"
+              data-impact="<%= option.impact %>"
+              required
+            />
+            <label for="option-<%= index %>"><%= option.choice %></label>
+          </div>
+        <% }) %>
+       
+        <button type="button" onclick="displayImpactMessage()" >Submit</button>
+        <button type="submit" >Next</button>
+
+
+      </form>
+    </div>
+    <div id="impact-message" style="margin-top: 20px; color: rgb(246, 255, 0);  font-weight: bold; "></div>
+    <form action="/reset" method="POST" style="margin-top: 20px;">
+      <button type="submit">Reset Game</button>
+    </form>
+  </div>
+  <script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+  crossorigin="anonymous"
+></script>
+  <script>
+     function displayImpactMessage() {
+    const selectedOption = document.querySelector('input[name="selectedOption"]:checked');
+    const impactMessageDiv = document.getElementById('impact-message');
+
+    // Check if an option is selected
+    if (selectedOption) {
+      const impactMessage = selectedOption.getAttribute('data-impact');
+      impactMessageDiv.textContent = "Impact of Your Choice: " + impactMessage;  // Display the impact message
+    } else {
+      impactMessageDiv.textContent = "Please select an option.";  // Show a message if no option is selected
+    }
+  }
+
+    
+  </script>
+</body>
+</html>

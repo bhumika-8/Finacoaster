@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Finance Blogs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* General Styling */
+/* General Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #121212; /* Dark background */
+  color: #ffffff; /* White text */
+  display: flex;
+  justify-content: center;
+  /* align-items: flex-start; */
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the body takes full viewport height */
+}
+
+/* Add a top padding here to prevent overlap with the fixed header */
+body {
+  padding-top: 80px; /* Space for the fixed header */
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: rgba(0, 128, 0, 0.8); /* Olive Green */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Blog Container */
+.blog-container {
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Blog Styling */
+.blog {
+  background-color: #1e1e1e; /* Dark background for blog entries */
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog:hover {
+  transform: translateY(-10px); /* Slight upward movement on hover */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.8); /* Enhanced shadow on hover */
+}
+
+.blog h2 {
+  font-size: 1.8rem;
+  color: rgba(0, 128, 0, 0.8); /* Olive green for titles */
+}
+
+.blog p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.blog p strong {
+  color: rgba(0, 128, 0, 0.6); /* Olive green for strong text */
+}
+
+.blog button {
+  background-color: rgba(0, 128, 0, 0.7);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.blog button a {
+  text-decoration: none;
+  color: white;
+}
+
+.blog button:hover {
+  background-color: rgba(0, 128, 0, 1); /* Darker green on hover */
+}
+
+/* Header Styling */
+header {
+  position: fixed; /* Fix the header at the top of the page */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark background with transparency */
+  color: white;
+  padding: 10px 20px;
+  z-index: 1000; /* Ensure the header is above other content */
+}
+
+/* Header Container */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo Styling */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: rgba(0, 128, 0, 0.8); /* Olive green for the logo */
+}
+
+/* Navigation Menu */
+nav ul {
+  list-style-type: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: rgba(0, 128, 0, 0.8); /* Olive green on hover */
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .blog-container {
+    width: 90%;
+  }
+
+  .blog {
+    padding: 15px;
+  }
+
+  .blog h2 {
+    font-size: 1.5rem;
+  }
+
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  nav ul li {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
+
+    </style>
+   
+    
+</head>
+<body>
+    <header>
+        <div class="header-container">
+          <a href="/" class="logo">Finacoaster</a>
+          <nav>
+            <ul>
+              
+              <li><i class="fa-solid fa-house"></i><a href="/es"> Dashboard</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      
+    <h1 >Latest Finance Blogs</h1>
+    <div class="blog-container">
+        <% blogs.forEach(blog => { %>
+            <div class="blog">
+                <h2><%= blog.title %></h2>
+                <p><strong>Author:</strong> <%= blog.author || 'Unknown' %></p>
+                <p><strong>Published at:</strong> <%= new Date(blog.publishedAt).toLocaleDateString() %></p>
+                <p><%= blog.description %></p>
+                <button><a href="<%= blog.url %>" target="_blank">Read more</a></button>
+            </div>
+        <% }); %>
+    </div>
+</body>
+</html>

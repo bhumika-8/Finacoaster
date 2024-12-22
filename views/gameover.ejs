@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Over</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Game Over!</h1>
+    <p>Your final stats:</p>
+    <div class="stats">
+      <p>Credit Score: <strong><%= user.credit_score %></strong></p>
+      <p>Net Balance: <strong>$<%= user.net_balance %></strong></p>
+    </div>
+    <form action="/reset" method="POST">
+      <button type="submit">Restart Game</button>
+    </form>
+  </div>
+</body>
+</html>
