@@ -1,11 +1,14 @@
 const mongoose=require("mongoose");
-const connect=mongoose.connect("mongodb+srv://moonglow:JD18E6H55gZZ7jKS@finacoaster-final.oxkrr.mongodb.net/user_info?retryWrites=true&w=majority&appName=finacoaster-final")
-connect.then(()=>{
+require('dotenv').config();
+const connect=process.env.MONGODB_URI;
+mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
     console.log("Database Connected Successfully");
-})
-.catch(()=>{
+  })
+  .catch((err) => {
     console.log("Database CANNOT connect");
-});
+    console.error(err);
+  });
 
 //schema
 
