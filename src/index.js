@@ -42,7 +42,8 @@ app.post("/signup",async(req,res)=>{
         email:req.body.email_user,
         net_balance:500,
         earning:[],
-        amount:[]
+        spent:[],
+        //quiz_index:0
 
     }
     const exs=await collection.findOne({username: data.username});
@@ -59,31 +60,28 @@ app.post("/signup",async(req,res)=>{
 
 
 //login
-app.post('/',async(req,res)=>{
-    try{
-        const check= await collection.findOne({username:req.body.username});
-        if(!check){
-            res.send("User not found");
+app.post('/', async (req, res) => {
+    try {
+        const check = await collection.findOne({ username: req.body.username });
+        
+        if (!check) {
+            return res.send("User not found");  // ✅ return here
         }
 
-        //compare password
-        password=req.body.password;
-        if(check.password!=password){
-            res.send("incorrect password");
+        const password = req.body.password;
+        if (check.password !== password) {
+            return res.send("Incorrect password");  // ✅ return here too
+        }
 
-        }
-        else{
-            req.session.user=check;
-            console.log(req.session.user);
-            res.redirect('/es');
-            
-        }
+        req.session.user = check;
+        console.log(req.session.user);
+        return res.redirect('/es');  // ✅ also return here for safety
+    } catch (err) {
+        console.error(err);
+        return res.send("Wrong details");  // ✅ return here as well
     }
-    catch{
-        res.send("wrong details");
-    }
-
 });
+
 
 //leaderboard
 app.get('/lb',async(req,res)=>{
